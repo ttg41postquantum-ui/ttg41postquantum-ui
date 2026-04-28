@@ -4,6 +4,14 @@
 
 ---
 
+## Product & Business
+
+For information about **AgriSign**, our commercial platform for cattle record signing and livestock management, please see:
+
+👉 **[PRODUCT.md](./PRODUCT.md)**
+
+---
+
 ## About
 
 **TT-G41** (Tully Tesla Grok 41) is a proprietary post-quantum cryptographic and computational framework developed by **Chloe Jane Tully**, mathematician and founder of the Ly Algebra.
