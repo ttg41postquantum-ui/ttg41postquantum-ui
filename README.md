@@ -1,43 +1,33 @@
-# TT-G41: SO(5) Circle Pinch
+# AIRCC Author Guidelines — Interactive Web Edition
 
-A symmetry-breaking structural constraint for protein structure prediction,
-targeting C-terminal disorder via SO(5) phase locking and Z₅-graded latent
-decomposition.
+This repository contains a responsive, accessible web edition of the supplied paper **“Formatting Guides for Authors of AIRCC Papers.”** It presents the complete manuscript-formatting guidance as an easy-to-navigate reference.
 
-**Status:** Simulation stage. Biological validation via AlphaFold integration
-pending.
+## Included Content
 
-## The Problem
+The site reproduces the paper’s title and author block, abstract, keywords, numbered sections, typography specifications, figure-and-table rules, acknowledgements, and references. It also provides a quick-reference table, sticky section navigation, a print-friendly layout, and a direct download of the supplied Microsoft Word document.
 
-AlphaFold and similar models consistently predict disordered C-terminal
-regions as low-confidence extended coils. This is a known failure mode:
-flexible tails lack the evolutionary coupling signals that drive confident
-structure prediction.
+| Requirement | Specification |
+|---|---|
+| Page | A4 portrait, 210 × 297 mm |
+| Margins | 30 mm on all sides |
+| Body text | 11 pt Times New Roman, justified |
+| Abstract | Maximum 150 words |
+| Paper length | Maximum 20 pages |
+| Source formats | `.doc` or `.pdf` for initial consideration |
 
-## The Approach
+## Local Development
 
-TT-G41 applies a soft geometric constraint on the model's latent space,
-inspired by the group structure of protein backbone conformations:
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Z₅-graded latent decomposition** into scalar (1D), antisymmetric torque
-  (10D), and symmetric strain (14D) components, with golden ratio
-  multiplicative grading
-- **φ-conjugate attenuation gate** that boosts aligned rotational phases and
-  suppresses anti-aligned entropy
-- **Confidence-driven targeting** that scales constraint strength by the
-  model's own per-residue uncertainty — maximum pinch on disordered regions,
-  minimal disturbance to ordered domains
+The application uses React, TypeScript, Vite, Tailwind CSS, Wouter, and Lucide icons.
 
-## Simulation Results (BRCA1 RING + C-TAIL, 5 seeds)
+## Source Document
 
-| Metric | AlphaFold Server (Baseline) | TT-G41 (Simulated) |
-|--------|----------------------------|---------------------|
-| pTM | 0.41 | 0.81 |
-| N-C Distance | ~40 Å (extended) | 15.6 Å (compacted) |
-| Confidence | Low | Moderate |
+The supplied source is stored at [`client/public/aircc-author-guidelines.doc`](./client/public/aircc-author-guidelines.doc) and is available from the page’s download controls.
 
-**Important:** These metrics are computed from simulated strain norms, not
-from predicted coordinates vs. experimental structures. Real-world validation
-is the critical next step.
+## Official AIRCC Resources
 
-## Repository Contents
+The [AIRCC journal submission guidance](https://airccse.org/journal/paper.html) links to the official [Microsoft Word manuscript template](https://airccse.org/journal/aircc_template.doc) and submission system.

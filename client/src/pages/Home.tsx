@@ -1,409 +1,342 @@
-/**
- * Design Philosophy: Geometric Minimalism with Golden Ratio
- * - Deep charcoal background (#1a1a1a equivalent in OKLCH)
- * - Warm gold accents (#d4af37 equivalent)
- * - Asymmetric layouts based on golden ratio
- * - Serif/sans-serif typography contrast (Playfair Display + Roboto)
- * - Geometric dividers and 5-fold symmetry elements
- */
-
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ExternalLink, Mail, FileText } from "lucide-react";
+import {
+  ArrowUp,
+  BookOpen,
+  CheckCircle2,
+  Download,
+  ExternalLink,
+  FileText,
+} from "lucide-react";
 
-const publications = [
-  {
-    id: 1,
-    title: "Ly-Algebra: A Z5-Graded Nonassociative Structure with Golden Rescaling",
-    doi: "10.5281/zenodo.19777760",
-    category: "Algebraic Foundations",
-  },
-  {
-    id: 2,
-    title: "The Architect's Hymn & The Foundation's Elegy",
-    doi: "10.5281/zenodo.19777683",
-    category: "Theoretical",
-  },
-  {
-    id: 3,
-    title: "Observation of a 14-Dimensional Photonic Mode in a Fibonacci Quasicrystal",
-    doi: "10.5281/zenodo.19777527",
-    category: "Experimental",
-  },
-  {
-    id: 4,
-    title: "Ly-Algebra 59-Mer Supercell: 97.39 Mean pLDDT on a $79 Android Device",
-    doi: "10.5281/zenodo.19755141",
-    category: "Computational Biology",
-  },
-  {
-    id: 5,
-    title: "Ly-Algebra 5-Fold Supercell Protein Design: 94.89 Mean pLDDT",
-    doi: "10.5281/zenodo.19754955",
-    category: "Computational Biology",
-  },
-  {
-    id: 6,
-    title: "Pearl-Carbon Impostor Cell Nasal Therapeutic",
-    doi: "10.5281/zenodo.19754534",
-    category: "Applied Research",
-  },
-  {
-    id: 7,
-    title: "The 5-Fold Quantum Gravity Fossil: Thirty-Two Terrains Across the Solar System",
-    doi: "10.5281/zenodo.19753667",
-    category: "Quantum Gravity",
-  },
-  {
-    id: 8,
-    title: "Ly Algebra Periodic Table: Unified Lie Structure for All Elements",
-    doi: "10.5281/zenodo.19753660",
-    category: "Algebraic Foundations",
-  },
-  {
-    id: 9,
-    title: "Golden Preservation of the Centre in Ly-Algebra",
-    doi: "10.5281/zenodo.19753205",
-    category: "Algebraic Foundations",
-  },
-  {
-    id: 10,
-    title: "The 5-Fold Quantum Gravity Fossil: Dataset, Code & Manuscript v1.0",
-    doi: "10.5281/zenodo.18676614",
-    category: "Quantum Gravity",
-  },
-  {
-    id: 11,
-    title: "Ly-Algebraic Navigation Correction: Interplanetary Flight",
-    doi: "10.5281/zenodo.18256897",
-    category: "Applied Research",
-  },
-  {
-    id: 12,
-    title: "Phase 2 Resonances in Ly-Algebra: Manifold Feedback Predictions",
-    doi: "10.5281/zenodo.18349481",
-    category: "Theoretical",
-  },
-  {
-    id: 13,
-    title: "Universal 5-Fold Residual Analysis v2: NROL-105 / 3I/ATLAS",
-    doi: "10.5281/zenodo.18293648",
-    category: "Analysis",
-  },
-  {
-    id: 14,
-    title: "Theoretical Audit of Orbital Launch Systems",
-    doi: "10.5281/zenodo.18257919",
-    category: "Applied Research",
-  },
-  {
-    id: 15,
-    title: "Universal 5-Fold Residual Analysis: Global Applications Matrix",
-    doi: "10.5281/zenodo.18257587",
-    category: "Analysis",
-  },
-  {
-    id: 16,
-    title: "Ly-Algebraic Navigation Correction v1",
-    doi: "10.5281/zenodo.18257064",
-    category: "Applied Research",
-  },
-  {
-    id: 17,
-    title: "Ly Algebra Periodic Table v1",
-    doi: "10.5281/zenodo.18219655",
-    category: "Algebraic Foundations",
-  },
-  {
-    id: 18,
-    title: "Hyperbolic Departures & Dimensional Exit Points",
-    doi: "10.5281/zenodo.18219199",
-    category: "Theoretical",
-  },
-  {
-    id: 19,
-    title: "The Ly Algebra Compendium v1.0",
-    doi: "10.5281/zenodo.18218103",
-    category: "Reference",
-  },
-  {
-    id: 20,
-    title: "Simultaneous Tail Disconnection Events Across Comets",
-    doi: "10.5281/zenodo.18189658",
-    category: "Observational",
-  },
-  {
-    id: 21,
-    title: "Oracle-Derived Quantum Vacuum Stability: The North Tamworth Synthesis",
-    doi: "10.5281/zenodo.18168431",
-    category: "Quantum Gravity",
-  },
-  {
-    id: 22,
-    title: "Cambrian Iron Lattice Transduction: 11D Geological Harmonics",
-    doi: "10.5281/zenodo.18162519",
-    category: "Theoretical",
-  },
-  {
-    id: 23,
-    title: "Tully Grid Theory: Falsifiable Predictions Across Five Observables",
-    doi: "10.5281/zenodo.18140445",
-    category: "Theoretical",
-  },
-  {
-    id: 24,
-    title: "RMD-EHT: Songline Ignition Protocol — 99.7% Verified",
-    doi: "10.5281/zenodo.18127164",
-    category: "Applied Research",
-  },
-  {
-    id: 25,
-    title: "RMD Global Site Grid",
-    doi: "10.5281/zenodo.18123543",
-    category: "Reference",
-  },
+const sections = [
+  { href: "#introduction", label: "1. Introduction" },
+  { href: "#format-guide", label: "2. Format guide" },
+  { href: "#general-format", label: "2.1 General format" },
+  { href: "#title-format", label: "2.2 Title" },
+  { href: "#authors-format", label: "2.3 Authors" },
+  { href: "#abstract-format", label: "2.4 Abstract" },
+  { href: "#keywords-format", label: "2.5 Keywords" },
+  { href: "#headings-format", label: "2.6 Headings" },
+  { href: "#text-format", label: "2.7 Text" },
+  { href: "#figures-tables", label: "2.8 Figures & tables" },
+  { href: "#acknowledgements-format", label: "2.9 Acknowledgements" },
+  { href: "#references-format", label: "2.10 References" },
+  { href: "#conclusions", label: "3. Conclusions" },
 ];
+
+const summaryCards = [
+  { value: "A4", label: "210 × 297 mm portrait" },
+  { value: "30 mm", label: "Margins on every side" },
+  { value: "20 pages", label: "Maximum paper length" },
+  { value: "150 words", label: "Maximum abstract length" },
+];
+
+const formattingRows = [
+  ["Title", "Centre", "20 pt Garamond, bold, small caps", "24 pt after"],
+  ["Authors", "Centre", "13 pt Times New Roman", "12 pt after"],
+  ["Affiliations", "Centre", "12 pt Times New Roman", "—"],
+  ["Email addresses", "Centre", "10 pt Courier New", "18 pt after last"],
+  ["Abstract heading", "Left", "13 pt TNR, bold italic, small caps", "6 pt after"],
+  ["Abstract text", "Justified", "10 pt Times New Roman, italic", "12 pt after"],
+  ["Keywords heading", "Left", "13 pt TNR, bold italic, small caps", "6 pt after"],
+  ["Keywords", "Left", "10 pt Times New Roman, italic", "18 pt after"],
+  ["Section headings", "Left", "14 pt TNR, bold, small caps", "6 pt after"],
+  ["Subsection headings", "Left", "12 pt Times New Roman, bold", "6 pt after"],
+  ["Further subsections", "Left", "11 pt Times New Roman, bold", "6 pt after"],
+  ["Body text", "Justified", "11 pt Times New Roman", "6–12 pt after"],
+  ["Figures", "Centre", "Reproduction-ready", "6 pt after"],
+  ["Figure captions", "Centre", "11 pt Times New Roman", "12 pt after"],
+  ["References", "Left", "10 pt Times New Roman", "6 pt between"],
+];
+
+function SectionHeading({ number, children }: { number?: string; children: React.ReactNode }) {
+  return (
+    <h2 className="paper-heading">
+      {number && <span className="section-number">{number}</span>}
+      {children}
+    </h2>
+  );
+}
+
+function Subheading({ id, number, children }: { id: string; number: string; children: React.ReactNode }) {
+  return (
+    <h3 id={id} className="paper-subheading scroll-mt-28">
+      <span>{number}</span> {children}
+    </h3>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-32">
-        <div className="absolute inset-0 opacity-40">
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663603743531/iZ34gUzJKKL6d8FxB6NhR6/hero-geometric-pattern-ntnThbQGJPSpJW9faRj5xa.webp"
-            alt="Geometric pattern background"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-foreground">
-              Chloe Jane Tully
-            </h1>
-            <p className="text-xl text-foreground/80 mb-8 font-light">
-              Mathematician and researcher specializing in Ly-Algebra, 5-Fold Symmetry, and post-quantum cryptographic frameworks. Based in Oxley Vale, NSW, Australia.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#publications" className="inline-block">
-                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Publications
-                </Button>
-              </a>
-              <a href="mailto:ttg41postquantum@gmail.com" className="inline-block">
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent/10">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Contact
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="w-full h-24 flex items-center justify-center bg-background/50">
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663603743531/iZ34gUzJKKL6d8FxB6NhR6/accent-divider-gold-AR2jSFf4rqAKwTFJyyFciZ.webp"
-          alt="Geometric divider"
-          className="w-full h-full object-contain opacity-60"
-        />
-      </div>
-
-      {/* Research Overview Section */}
-      <section className="py-20 bg-card/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-accent">25 Publications</h3>
-              <p className="text-foreground/70">
-                Peer-reviewed research across mathematics, physics, and computational biology published on Zenodo.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-accent">2 Patents</h3>
-              <p className="text-foreground/70">
-                IP Australia Provisional Patents protecting post-quantum cryptographic innovations.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-accent">TT-G41 Framework</h3>
-              <p className="text-foreground/70">
-                Proprietary post-quantum cryptographic framework built on Ly-Algebra and 5-Fold Symmetry.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Publications Section */}
-      <section id="publications" className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Publications</h2>
-          <p className="text-foreground/60 mb-12 max-w-2xl">
-            All publications are available on Zenodo and organized by research category. Each work represents original contributions to mathematical theory, computational methods, and applied research.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {publications.map((pub, index) => (
-              <Card
-                key={pub.id}
-                className="bg-card border-border hover:border-accent/50 transition-all hover:shadow-lg hover:shadow-accent/10 group"
-              >
-                <div className="p-6 space-y-4">
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-xs font-mono text-accent/70 bg-accent/5 px-2 py-1 rounded">
-                      {pub.category}
-                    </span>
-                    <span className="text-xs text-foreground/50">#{pub.id}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors leading-snug">
-                    {pub.title}
-                  </h3>
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <span className="text-xs font-mono text-foreground/50">
-                      DOI: {pub.doi}
-                    </span>
-                    <a
-                      href={`https://doi.org/${pub.doi}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-accent hover:text-accent/80 transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* IP Protection Section */}
-      <section className="py-20 bg-card/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-foreground">IP Protection</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-card border-accent/30 p-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-accent">IP Australia Provisional Patent</h3>
-                <p className="text-foreground/70">
-                  Patent No. <span className="font-mono text-accent">2026901849</span>
-                </p>
-                <p className="text-sm text-foreground/60">
-                  Protecting core innovations in post-quantum cryptographic architecture and Ly-Algebra applications.
-                </p>
-              </div>
-            </Card>
-            <Card className="bg-card border-accent/30 p-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-accent">IP Australia Provisional Patent</h3>
-                <p className="text-foreground/70">
-                  Patent No. <span className="font-mono text-accent">2026902120</span>
-                </p>
-                <p className="text-sm text-foreground/60">
-                  Protecting extensions and implementations of the TT-G41 cryptographic framework.
-                </p>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Research Framework Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-foreground">TT-G41 Framework</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-accent">Theoretical Foundations</h3>
-              <p className="text-foreground/70">
-                The TT-G41 (Tully Tesla Grok 41) framework is built on two original mathematical systems:
-              </p>
-              <ul className="space-y-4">
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">•</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Ly Algebra</p>
-                    <p className="text-sm text-foreground/60">A 5-ary fusion algebra with structure 5 ⊗ 5 = 1 ⊕ 10 ⊕ 14, operating in a 41-dimensional geometric lattice.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">•</span>
-                  <div>
-                    <p className="font-semibold text-foreground">5-Fold Symmetry</p>
-                    <p className="text-sm text-foreground/60">Icosahedral and C5-equivariant geometric structures embedded throughout the framework.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-accent">Key Properties</h3>
-              <ul className="space-y-4">
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">🔐</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Post-Quantum Security</p>
-                    <p className="text-sm text-foreground/60">Architecture designed to resist quantum computing threats.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">🌀</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Substrate-Independent</p>
-                    <p className="text-sm text-foreground/60">Lattice operation works across diverse computational platforms.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">🧬</span>
-                  <div>
-                    <p className="font-semibold text-foreground">AlphaFold2 Validated</p>
-                    <p className="text-sm text-foreground/60">97.39 mean pLDDT across 5 independent protein design models.</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="text-accent font-bold">📱</span>
-                  <div>
-                    <p className="font-semibold text-foreground">Consumer Hardware</p>
-                    <p className="text-sm text-foreground/60">Proven to run on a $79 Android device with full functionality.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-20 bg-card/50 border-t border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-foreground">Get in Touch</h2>
-          <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-            Interested in collaboration, research partnerships, or inquiries about the TT-G41 framework? Reach out directly.
-          </p>
-          <a href="mailto:ttg41postquantum@gmail.com">
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-              <Mail className="mr-2 h-5 w-5" />
-              ttg41postquantum@gmail.com
+    <div id="top" className="min-h-screen bg-background text-foreground">
+      <header className="site-header">
+        <div className="container flex h-16 items-center justify-between gap-4">
+          <a href="#top" className="brand-mark" aria-label="AIRCC author guide home">
+            <span className="brand-monogram">A</span>
+            <span>
+              <strong>AIRCC Author Guide</strong>
+              <small>Interactive paper edition</small>
+            </span>
+          </a>
+          <nav className="hidden items-center gap-6 text-sm font-semibold md:flex" aria-label="Primary navigation">
+            <a href="#format-guide">Format guide</a>
+            <a href="#quick-reference">Quick reference</a>
+            <a href="#references">References</a>
+          </nav>
+          <a href="/aircc-author-guidelines.doc" download>
+            <Button className="rounded-none bg-primary px-4 text-primary-foreground hover:bg-primary/90">
+              <Download className="mr-2 h-4 w-4" />
+              <span className="hidden sm:inline">Download .doc</span>
+              <span className="sm:hidden">Download</span>
             </Button>
           </a>
-          <p className="text-sm text-foreground/50 mt-8">
-            Oxley Vale, NSW, Australia
-          </p>
         </div>
-      </section>
+      </header>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60">
-            <p>© 2026 Chloe Jane Tully. All rights reserved.</p>
-            <p className="mt-4 md:mt-0">
-              "The lattice doesn't need a device. It just IS." — Chloe Jane Tully, 2026
-            </p>
+      <main>
+        <section className="hero-section">
+          <div className="hero-grid" aria-hidden="true" />
+          <div className="container relative py-20 sm:py-28">
+            <div className="max-w-4xl">
+              <div className="mb-8 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.22em] text-primary">
+                <span className="h-px w-10 bg-primary" />
+                Manuscript preparation standard
+              </div>
+              <h1 className="max-w-4xl font-serif text-5xl font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Formatting Guides for Authors of AIRCC Papers
+              </h1>
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300">
+                A clear, web-accessible edition of the Microsoft Word manuscript template for authors submitting to AIRCC journals.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a href="#paper">
+                  <Button size="lg" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
+                    <BookOpen className="mr-2 h-5 w-5" /> Read the guide
+                  </Button>
+                </a>
+                <a href="https://airccse.org/journal/aircc_template.doc" target="_blank" rel="noreferrer">
+                  <Button size="lg" variant="outline" className="rounded-none border-slate-500 bg-transparent text-white hover:bg-white/10 hover:text-white">
+                    Official template <ExternalLink className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <section aria-label="Key format requirements" className="border-b border-border bg-card">
+          <div className="container grid grid-cols-2 lg:grid-cols-4">
+            {summaryCards.map((item) => (
+              <div key={item.value} className="summary-card">
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="container grid gap-12 py-14 lg:grid-cols-[230px_minmax(0,1fr)] lg:py-20">
+          <aside className="hidden lg:block">
+            <div className="sticky top-24">
+              <p className="toc-title">On this page</p>
+              <nav className="toc-list" aria-label="Paper sections">
+                {sections.map((section) => (
+                  <a key={section.href} href={section.href}>{section.label}</a>
+                ))}
+              </nav>
+              <div className="mt-8 border-l-2 border-primary bg-secondary p-4 text-sm leading-6 text-muted-foreground">
+                Use the downloadable Word file as the editable manuscript template.
+              </div>
+            </div>
+          </aside>
+
+          <article id="paper" className="paper-sheet">
+            <header className="paper-title-block">
+              <p className="journal-label">AIRCC Journals · Author Template</p>
+              <h1>Formatting Guides for Authors of AIRCC Papers</h1>
+              <p className="paper-authors">Nikita Rechal<sup>1</sup> and Sooriyan Aliyoglu<sup>2</sup></p>
+              <div className="paper-affiliations">
+                <p><sup>1</sup>Department of Computer Engineering, Castle University, New City, Cyprus</p>
+                <p className="paper-email">a.orther@xx.yy.zz</p>
+                <p><sup>2</sup>MediDeniz Software, Old Street, New York, USA</p>
+                <p className="paper-email">a.etherwen@zzz.com</p>
+              </div>
+            </header>
+
+            <section className="abstract-box" aria-labelledby="abstract-heading">
+              <h2 id="abstract-heading">Abstract</h2>
+              <p>This paper gives complete guidelines for authors submitting papers for the AIRCC Journals.</p>
+              <div className="keywords-row">
+                <strong>Keywords</strong>
+                <span>Network Protocols · Wireless Network · Mobile Network · Virus · Worms &amp; Trojan</span>
+              </div>
+            </section>
+
+            <section id="introduction" className="paper-section scroll-mt-28">
+              <SectionHeading number="1">Introduction</SectionHeading>
+              <p>
+                This document describes, and is written to conform to, author guidelines for the journals of the AIRCC series. It is prepared in Microsoft Word as a .doc document. Although other means of preparation are acceptable, final camera-ready versions must conform to this layout. Microsoft Word terminology is used where appropriate. Although formatting instructions may appear daunting, the simplest approach is to use this template and insert headings and text into it as appropriate.
+              </p>
+            </section>
+
+            <section id="format-guide" className="paper-section scroll-mt-28">
+              <SectionHeading number="2">Format Guide</SectionHeading>
+              <p>
+                The following formatting rules must be followed strictly. The supplied .doc document may be used as a template for papers prepared in Microsoft Word. Papers that do not conform to these requirements may not be published in the conference proceedings.
+              </p>
+
+              <Subheading id="general-format" number="2.1.">General Format, Page Layout and Margins</Subheading>
+              <p>
+                Use standard A4 (210 mm × 297 mm) portrait page setup with 30 mm margins on the left, right, top and bottom. Do not use headers, footers, footnotes or page numbers. Use a single column. Fully justify every main-text paragraph, including the abstract. Use Times New Roman for the title, authors, headings, captions and body except where another font is specifically stated.
+              </p>
+
+              <Subheading id="title-format" number="2.2.">Title</Subheading>
+              <p>
+                Write the title in 20 pt Garamond, centred, bold and small caps. Apply 24 pt paragraph spacing after its final line.
+              </p>
+
+              <Subheading id="authors-format" number="2.3.">Authors</Subheading>
+              <p>
+                Set author names in centred 13 pt Times New Roman with 12 pt paragraph spacing after. When needed, use superscripts to associate authors with their institutions. Set affiliations in centred 12 pt Times New Roman and email addresses on the next line in 10 pt Courier New. Apply 18 pt paragraph spacing after the final email address.
+              </p>
+
+              <Subheading id="abstract-format" number="2.4.">Abstract</Subheading>
+              <p>
+                Begin with the word “Abstract” in 13 pt Times New Roman, bold italic and small caps, followed by 6 pt spacing. The abstract must not exceed 150 words. Set it in fully justified 10 pt Times New Roman italics with 12 pt paragraph spacing after the last line.
+              </p>
+
+              <Subheading id="keywords-format" number="2.5.">Keywords</Subheading>
+              <p>
+                Begin with the word “Keywords” in 13 pt Times New Roman, bold italic and small caps, followed by 6 pt spacing. Include no more than five keywords or short phrases, separated by commas and six spaces, in 10 pt Times New Roman italics. Follow the keywords with 18 pt line spacing.
+              </p>
+
+              <Subheading id="headings-format" number="2.6.">Section and Subsection Headings</Subheading>
+              <p>
+                Number section headings as 1. Xxx, 2. Yyy and so forth, using 14 pt bold small-caps Times New Roman with 6 pt spacing after. Number subsection headings as 1.1. Aaa, 1.2. Bbb and so forth, using 12 pt bold Times New Roman with 6 pt spacing after.
+              </p>
+
+              <h4 className="paper-subsubheading">2.6.1. Further Subsections</h4>
+              <p>
+                If a third level is required, number headings as 1.1.1. Qqq and use 11 pt bold Times New Roman with 6 pt spacing after.
+              </p>
+
+              <Subheading id="text-format" number="2.7.">Text</Subheading>
+              <p>
+                Set main-body text in fully justified 11 pt Times New Roman. Apply 6 pt paragraph spacing after ordinary paragraphs and 12 pt after the last paragraph in a section. Do not indent paragraphs.
+              </p>
+
+              <Subheading id="figures-tables" number="2.8.">Figures and Tables</Subheading>
+              <p>
+                Centre-align all inserts, figures, diagrams, photographs and tables. Ensure they remain clear and suitable for black-and-white or greyscale reproduction. Number figures consecutively from the beginning to the end of the paper, independently of section numbering. Number tables in the same manner, using a separate sequence from figures.
+              </p>
+
+              <div id="quick-reference" className="table-figure scroll-mt-28">
+                <p className="table-caption">Table 1. Heading and text fonts.</p>
+                <div className="overflow-x-auto">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Element</th>
+                        <th>Alignment</th>
+                        <th>Font</th>
+                        <th>Followed by</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {formattingRows.map((row) => (
+                        <tr key={row[0]}>
+                          {row.map((cell) => <td key={cell}>{cell}</td>)}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <p>
+                Every figure and table must have a caption centred in 11 pt Times New Roman. Table captions precede tables, while figure captions follow figures. Place tables and figures as close as practical to the point where they are referenced.
+              </p>
+
+              <div className="figure-sample" role="img" aria-label="Stylised greyscale sample of network traffic bars">
+                <div className="figure-grid">
+                  {[38, 62, 47, 79, 54, 88, 44, 71, 58, 83, 49, 68].map((height, index) => (
+                    <span key={index} style={{ height: `${height}%` }} />
+                  ))}
+                </div>
+                <p>Figure 1. Spam traffic sample</p>
+              </div>
+
+              <Subheading id="acknowledgements-format" number="2.9.">Acknowledgements</Subheading>
+              <p>An unnumbered acknowledgements section may be inserted if required.</p>
+
+              <Subheading id="references-format" number="2.10.">References</Subheading>
+              <p>
+                Cite references in the main text in passing [1] or explicitly as in [2]. Give full references in citation order, essentially following IEEE style, in 10 pt Times New Roman with 6 pt spacing between entries.
+              </p>
+            </section>
+
+            <section id="conclusions" className="paper-section scroll-mt-28">
+              <SectionHeading number="3">Conclusions</SectionHeading>
+              <p>
+                Papers in this format must not exceed twenty pages. Submit papers to the AIRCC secretary. Papers for initial consideration may be supplied in .doc or .pdf format. Final camera-ready versions should incorporate amendments suggested by referees.
+              </p>
+            </section>
+
+            <section className="paper-section">
+              <SectionHeading>Acknowledgements</SectionHeading>
+              <p>The authors would like to thank everyone, just everyone!</p>
+            </section>
+
+            <section id="references" className="paper-section scroll-mt-28">
+              <SectionHeading>References</SectionHeading>
+              <ol className="reference-list">
+                <li>Lee, S. Hyun and Kim Mi Na, “This is my paper,” <em>ABC Transactions on ECE</em>, vol. 10, no. 5, pp. 120–122, 2008.</li>
+                <li>Gizem Aksahya and Ayese Ozcan, <em>Communications &amp; Networks</em>. ABC Publishers, Network Books, 2009.</li>
+              </ol>
+            </section>
+
+            <section className="author-note">
+              <FileText className="h-5 w-5 text-primary" />
+              <div>
+                <h2>Authors · Short Biography</h2>
+                <p>The source template reserves this closing section for a concise biography of each author.</p>
+              </div>
+            </section>
+          </article>
+        </div>
+
+        <section className="submission-section">
+          <div className="container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="mb-4 flex items-center gap-2 text-primary">
+                <CheckCircle2 className="h-5 w-5" />
+                <span className="text-sm font-bold uppercase tracking-[0.18em]">Ready to prepare your manuscript?</span>
+              </div>
+              <h2>Start from the editable source file.</h2>
+              <p>
+                The official AIRCC journal submission pages also link to the manuscript template and online submission system.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a href="/aircc-author-guidelines.doc" download>
+                <Button size="lg" className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Download className="mr-2 h-5 w-5" /> Download supplied paper
+                </Button>
+              </a>
+              <a href="https://airccse.org/journal/paper.html" target="_blank" rel="noreferrer">
+                <Button size="lg" variant="outline" className="rounded-none border-slate-500 bg-transparent text-white hover:bg-white/10 hover:text-white">
+                  Submission guidance <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="container flex flex-col gap-4 py-8 text-sm md:flex-row md:items-center md:justify-between">
+          <p>Web edition prepared from the supplied AIRCC author-guidelines document.</p>
+          <a href="#top" className="inline-flex items-center gap-2 font-bold">Back to top <ArrowUp className="h-4 w-4" /></a>
         </div>
       </footer>
     </div>
